@@ -2,6 +2,39 @@
 #include <fstream>
 #include <string.h>
 using namespace std;
+bool WhiteSpace(char x){
+  if(x==' ' || x=='\t'){
+    return true;
+  }
+  return false;
+}
+
+void readPart(string line, int& index, string& data, bool& status){
+  data = "";
+  status = true;
+  if(false){
+    data = line.substr(index,line.length() - index);
+    if(data == ""){
+      status = false;
+    }
+    return;
+  }
+  while(index<line.length() && !WhiteSpace(line[index])){//If no whitespace then data
+    data += line[index];
+    index++;
+  }
+  if(data == ""){
+    status = false;
+  }
+  while(index<line.length() && WhiteSpace(line[index])){//Increase index to pass all whitespace
+    index++;
+  }
+}
+
+
+
+
+
 string int2str(int &i){
 	string s;
 	stringstream ss(s);
